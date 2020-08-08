@@ -1,0 +1,14 @@
+*.jar
+resources/private/js/*
+classes/
+out/
+target/
+pom.xml
+.lein*
+.repl
+/classes
+/checkouts
+pom.xml.asc
+*.class
+/.lein-*
+/.nrepl-port
