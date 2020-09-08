@@ -27,11 +27,6 @@
   (-> (as-str text)
       (cstring/escape character-escapes)))
 
-(def h escape-html) ; alias for escape-html
-
-(defn end-tag []
-  " />")
-
 (defn xml-attribute
   ([name value] (xml-attribute name value true))
   ([name value escape?]
@@ -43,7 +38,11 @@
   (cond
     (true? value) (xml-attribute name name)
     (not value) ""
-    :else (xml-attribute name (if (map? value) (render-attr-map value) value) false)))
+    :else (xml-attribute name
+                         (if (map? value)
+                           (render-attr-map value)
+                           value)
+                         true)))
 
 (defn render-attr-map [attrs]
   (apply str
@@ -72,7 +71,7 @@
       (str "<" tag (render-attr-map attrs) ">"
            (render-html content)
            "</" tag ">")
-      (str "<" tag (render-attr-map attrs) (end-tag)))))
+      (str "<" tag (render-attr-map attrs) " />"))))
 
 (defn render-html
   "Turn a Clojure data type into a string of HTML.

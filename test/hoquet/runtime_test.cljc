@@ -56,7 +56,7 @@
   (is (= (render-html [:xml {:a "1", 'b "2", "c" "3"}])
            "<xml a=\"1\" b=\"2\" c=\"3\" />"))
   ; attribute values are escaped
-  #_(is (= (render-html [:div {:id "\""}]) "<div id=\"&quot;\"></div>"))
+  (is (= (render-html [:div {:id "\""}]) "<div id=\"&quot;\"></div>"))
   ; boolean attributes
   (is (= (render-html [:input {:type "checkbox" :checked true}])
            "<input checked=\"checked\" type=\"checkbox\" />"))
