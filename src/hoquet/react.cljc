@@ -30,7 +30,7 @@
 (defn create-element
   ([component] (create-element component nil))
   ([component attributes & children]
-   (apply *create-element* 'create-element component attributes children)))
+   (apply *create-element* component attributes children)))
 
 (declare render-react)
 
